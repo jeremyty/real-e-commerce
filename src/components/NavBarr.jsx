@@ -12,13 +12,14 @@ export default function NavBarr() {
         </Nav.Link>
         <Form className="position-relative">
           <Form.Control
-            type="search"
+            //type= "Search"
             placeholder="Search"
-            className="me-2 pr-4"
-            aria-label="Search"
-            style={{ fontSize: '11px' }}
+            className="me-1 pr-4"
+            aria-label= "Search"
+            style={{ fontSize: '12px' }}
           />
-          <i className="bi bi-search position-absolute" style={{ right: '10px', top: '50%', transform: 'translateY(-50%)' }}></i>
+          <i className="bi bi-search position-absolute" 
+          style={{ right: '10px', top: '50%', transform: 'translateY(-50%)' }}></i>
         </Form>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav.Link href="home" style={{ textAlign: 'center', margin: '0 auto' }}>
@@ -26,7 +27,10 @@ export default function NavBarr() {
           </Nav.Link>
           <Nav className="ms-4">
             <Nav.Link>Register</Nav.Link>
-            <Nav.Link>Sign In</Nav.Link>
+            <Nav.Link>
+              <i className="bi bi-box-arrow-in-right me-1"/>
+              Sign In
+            </Nav.Link>
             <Nav.Link>
               <Badge badgeContent={4} color="primary">
                 <i className="bi bi-cart3"></i>

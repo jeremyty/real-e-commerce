@@ -1,0 +1,14 @@
+.info {
+  opacity: 0;
+}
+
+.container:hover .info {
+opacity: 1;
+}
+
+.icon:hover {
+    background-color: #e9f5f5;
+    transform: scale(1.1);
+  }
+  
+  

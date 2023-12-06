@@ -1,9 +1,9 @@
 
-export default function News() {
+export default function Announcement() {
     
   return (
     <div className="d-flex justify-content-center align-items-center " 
-    style={{backgroundColor: "teal", 
+    style={{backgroundColor: "darkblue", 
     color: "white", 
     height: "30px", 
     fontSize: '14px',
@@ -12,3 +12,5 @@ export default function News() {
     </div>
   )
 }
+
+
