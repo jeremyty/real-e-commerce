@@ -1,5 +1,5 @@
 import { Button, Image } from "react-bootstrap";
-import { categories } from "./data";
+import { categories } from "../data";
 
 export default function Catogories() {
   return (

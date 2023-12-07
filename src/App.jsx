@@ -1,10 +1,27 @@
+import { Provider } from "react-redux"
+import { AuthProvider } from "./components/AuthProvider"
 import Home from "./pages/Home"
+import { store } from "./store"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Login from "./pages/Login"
+import Profile from "./pages/Profile"
 
 
 function App() {
 
   return (
-    <Home />  
+    <AuthProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="*" element={ <Home /> }/>
+            <Route path="/login" element={<Login />}/>
+            <Route path='/profile' element={<Profile />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </AuthProvider>
+     
   ) 
   
 }

@@ -11,7 +11,7 @@ export default function Newsletter() {
             type="email"
             placeholder="Enter your email address"
             className="me-1"
-            aria-label= "email"
+            controlId="formBasicEmail"
             style={{ fontSize: '14px' }}
           />
          <Button variant="dark">

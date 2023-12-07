@@ -1,13 +1,19 @@
 import { Badge } from "@mui/material";
 import { Container, Form, Image, Nav, Navbar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBarr() {
   const logo = "https://rb.gy/v00p0y";
+  const navigate = useNavigate();
+  const toLogin = async (e) => {
+    e.preventDefault();
+    navigate("/login")
+  }
 
   return (
     <Navbar expand="lg" className="bg-body-secondary">
-      <Container className="d-flex" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-        <Nav.Link className="me-4">
+      <Container className="d-flex align-items-center">
+        <Nav.Link className="me-3">
           EN
         </Nav.Link>
         <Form className="position-relative">
@@ -22,14 +28,13 @@ export default function NavBarr() {
           style={{ right: '10px', top: '50%', transform: 'translateY(-50%)' }}></i>
         </Form>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav.Link href="home" style={{ textAlign: 'center', margin: '0 auto' }}>
+          <Nav.Link href="home" className="d-flex align-items-center justify-content-center m-auto">
             <Image src={logo} alt="badminton Logo" roundedCircle style={{ width: 65 }} />
           </Nav.Link>
-          <Nav className="ms-4">
-            <Nav.Link>Register</Nav.Link>
-            <Nav.Link>
-              <i className="bi bi-box-arrow-in-right me-1"/>
-              Sign In
+          <Nav className="ms-5">
+            
+            <Nav.Link onClick={toLogin}>
+              <i className="bi bi-person" style={{fontSize: "20px"}}/>
             </Nav.Link>
             <Nav.Link>
               <Badge badgeContent={4} color="primary">

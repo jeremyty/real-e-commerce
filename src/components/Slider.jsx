@@ -1,5 +1,5 @@
 import { Button, Image } from "react-bootstrap";
-import { sliderItems } from "./data";
+import { sliderItems } from "../data";
 import { useState } from "react";
 
 export default function Slider() {

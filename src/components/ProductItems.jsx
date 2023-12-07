@@ -1,5 +1,5 @@
 import Product from "./Product";
-import { popularProducts } from "./data";
+import { popularProducts } from "../data";
 
 export default function ProductItems() {
   return (

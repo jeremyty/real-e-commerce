@@ -35,7 +35,7 @@ export default function Footer() {
                 <li style={{width: "50%", marginBottom: '10px'}}>Terms & Conditions</li>
             </ul>
 
-            <p style={{fontSize: "12px"}}>&copy; 2023 WinSmash. All rights reserved</p>
+            <p style={{fontSize: "12px"}}>&copy; 2023 WinSmash.  All rights reserved</p>
         </div>
         {/* right */}
         <div style={{flex: 1, padding: '20px'}}>
@@ -52,8 +52,6 @@ export default function Footer() {
             <Image src="https://i.ibb.co/1fDjBwG/magfit-c8df76f5-c2a1-489e-8ff6-b389762693bc-800x-removebg-preview.png" 
             style={{width: "50%"}}/>
         </div>
-        
-        
 
     </div>
     
