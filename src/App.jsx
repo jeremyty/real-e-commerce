@@ -1,10 +1,10 @@
 import { Provider } from "react-redux"
-import { AuthProvider } from "./components/AuthProvider"
 import Home from "./pages/Home"
 import { store } from "./store"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Login from "./pages/Login"
 import Profile from "./pages/Profile"
+import { AuthProvider } from "./components/AuthProvider"
 
 
 function App() {
