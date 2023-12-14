@@ -1,7 +1,12 @@
 import { Button, Image } from "react-bootstrap";
 import { categories } from "../data";
+import { useNavigate } from "react-router-dom";
 
 export default function Catogories() {
+  const navigate = useNavigate();
+  const toShop = () => {
+    navigate("/pl")
+  }
 
   return (
     <div className="d-flex justify-content-space-between" style={{ padding: "10px" }}>
@@ -13,8 +18,8 @@ export default function Catogories() {
         style={{
           flex: 1,
           margin: "1px",
-          height: "40vh", // Adjust the height for responsiveness
-          maxHeight: "500px", // Maximum height for the items
+          height: "40vh", 
+          maxHeight: "500px",
         }}
       >
         <Image
@@ -29,13 +34,15 @@ export default function Catogories() {
           <h1
             style={{
               color: "white",
-              marginBottom: "10px", // Adjusted margin for smaller screens
-              fontSize: "3.5vw", // Responsive font size based on viewport width
+              marginBottom: "10px", 
+              fontSize: "3.5vw", 
             }}
           >
             {item.title}
           </h1>
-          <Button variant="light" style={{ fontWeight: 500, fontSize: "1.5vw" }}>
+          <Button variant="light" 
+          style={{ fontWeight: 500, fontSize: "1.5vw" }}
+          onClick={toShop}>
             SHOP NOW
           </Button>
         </div>

@@ -1,9 +1,11 @@
 import { Button } from "react-bootstrap";
 import { sliderItems } from "../data";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Slider() {
 
+  const navigate = useNavigate();
   const [slideIndex, setSlideIndex] = useState(0);
   const handleLeftClick = () => {
     setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
@@ -12,6 +14,10 @@ export default function Slider() {
   const handleRightClick = () => {
     setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
   };
+
+  const toShop = () => {
+    navigate("/pl")
+  }
 
 
   
@@ -51,6 +57,7 @@ export default function Slider() {
                 <Button
                   variant="dark"
                   style={{ padding: "10px 15px", fontSize: "2vw" }}
+                  onClick={toShop}
                 >
                   SHOP NOW
                 </Button>

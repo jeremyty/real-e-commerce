@@ -14,6 +14,7 @@ export default function Product() {
             <Image 
                 src="https://i.ibb.co/T4Z8x1z/233-TS015-M-600-1-533x-removebg-preview.png" 
                 style={{ width: "100%", maxHeight: "100vh", objectFit: "cover" }}
+                
                 fluid 
             />
         </div>
@@ -24,7 +25,7 @@ export default function Product() {
                 </p>
                 <Row className="align-items-center justify-content-between" style={{ width: '50%', margin: '30px 0' }}>
                     <Col xs="auto">
-                        <span style={{ display: 'inline-block', fontSize: '40px', fontWeight: 100 }}>
+                        <span style={{ display: 'inline-block', fontSize: '40px', fontWeight: 200 }}>
                             <span style={{ marginRight: '5px' }}>RM</span>
                             <span>35</span>
                         </span>

@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 export default function NavBarr() {
   const logo = "https://rb.gy/v00p0y";
   const cart = useSelector((state) => state.cart);
+
   const totalItemInCart = cart.reduce((accumulator, item) => {
     return accumulator + item.amount;
   }, 0);
 
-  
 
   return (
     <Navbar bg="dark" expand="md" variant="dark">
