@@ -1,36 +1,33 @@
 export const sliderItems = [
     {
       id: 1,
-      img: "https://i.ibb.co/grKTjqf/lee-chong-wei-trangnguyensport-removebg-preview.png",
+      img: "https://joybadminton.com/cdn/shop/files/347421788_146192925102436_1377462828362334620_n_30fb3d74-3853-42e6-9610-e1f6f6178d8f.jpg?v=1686254793&width=1946",
       title: "POPULAR SALE",
-      desc: "GET FLAT 30% OFF FOR NEW ARRIVALS.",
-      bg: "F2F4F4",
+      desc: "GET FLAT 30% OFF FOR NEW USERS.",
     },
     {
       id: 2,
-      img: "https://i.ibb.co/PhjHHxX/AEROSENSA-30-3-533x-removebg-preview.png",
+      img: "https://joybadminton.com/cdn/shop/files/102230_2_20230811140720_06ad4aef-adea-4a52-b2f8-5a154103bb61_940x.jpg?v=1698966096",
       title: "YEAR END SALE",
       desc: "UP TO 50% OFF SALE & CLEARANCE",
-      bg: "D6DBDF",
     },
     {
       id: 3,
-      img: "https://i.ibb.co/X7cj9cM/wefw-8e328137-5453-4ccd-a081-9d80ee6b48b7-1066x-removebg-preview.png",
+      img: "https://joybadminton.com/cdn/shop/products/90329_2_20220907175106_940x.png?v=1695243468",
       title: "SPECIAL COLLECTION",
       desc: "CELEBRATING 10th ANNIVERSARY ",
-      bg: "F0EDEC",
     },
   ];
 
   export const categories = [
     {
       id: 1,
-      img: "https://media.istockphoto.com/id/654106838/photo/man-playing-badminton.jpg?b=1&s=612x612&w=0&k=20&c=TUroZzEv9sdS5d0qz-Qd34-qgbamlM6C7hWSwZg4Fb0=",
+      img: "https://i.ibb.co/gTJsMnd/106574-1-20230727165127-720x.webp",
       title: "APPARELS",
     },
     {
       id: 2,
-      img: "https://images.pexels.com/photos/7235235/pexels-photo-7235235.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      img: "https://i.ibb.co/JCkSTCs/spiderracket1.webp",
       title: "RACKET",
     },
     {

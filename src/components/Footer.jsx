@@ -26,13 +26,13 @@ export default function Footer() {
         <div style={{flex: 1, padding: '20px'}}>
             <h3 style={{marginBottom: "30px"}}>Useful Links</h3>
             <ul className="d-flex flex-wrap" 
-            style={{margin: 0, padding: 0, listStyle: "none", marginBottom: "90px"}}>
-                <li style={{width: "50%", marginBottom: '10px'}}>Home</li>
-                <li style={{width: "50%", marginBottom: '10px'}}>Cart</li>
-                <li style={{width: "50%", marginBottom: '10px'}}>Accessories</li>
-                <li style={{width: "50%", marginBottom: '10px'}}>My Account</li>
-                <li style={{width: "50%", marginBottom: '10px'}}>Wishlist</li>
-                <li style={{width: "50%", marginBottom: '10px'}}>Terms & Conditions</li>
+            style={{margin: 0, padding: 0, listStyle: "none", marginBottom: "100px"}}>
+                <li className="col-10 col-sm-8 col-md-6" style={{ marginBottom: '10px', textDecoration: "underline" }}>Home</li>
+                <li className="col-10 col-sm-8 col-md-6" style={{ marginBottom: '10px' , textDecoration: "underline" }}>Cart</li>
+                <li className="col-10 col-sm-8 col-md-6" style={{ marginBottom: '10px' , textDecoration: "underline" }}>Accessories</li>
+                <li className="col-10 col-sm-8 col-md-6" style={{ marginBottom: '10px', textDecoration: "underline" }}>My Account</li>
+                <li className="col-10 col-sm-8 col-md-6" style={{ marginBottom: '10px', textDecoration: "underline" }}>Wishlist</li>
+                <li className="col-10 col-sm-8 col-md-6" style={{ marginBottom: '10px', textDecoration: "underline" }}>Terms & Conditions</li>
             </ul>
 
             <p style={{fontSize: "12px"}}>&copy; 2023 WinSmash.  All rights reserved</p>
@@ -46,10 +46,10 @@ export default function Footer() {
             <div className="d-flex align-items-center" style={{marginBottom: "10px"}}>
                 <i className="bi bi-telephone" style={{marginRight: "10px"}}/> +603 2345 6677
             </div>
-            <div className="d-flex align-items-center" style={{marginBottom: "20px"}}>
+            <div className="d-flex align-items-center" style={{marginBottom: "30px"}}>
                 <i className="bi bi-envelope-open" style={{marginRight: "10px"}}/> contact@winsmash.com 
             </div>
-            <Image src="https://i.ibb.co/1fDjBwG/magfit-c8df76f5-c2a1-489e-8ff6-b389762693bc-800x-removebg-preview.png" 
+            <Image src="https://zomaxmalaysia.com.my/image/zomaxmy/image/data/fxHQdqeY1627979559.png" 
             style={{width: "50%"}}/>
         </div>
 

@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Alert, Button, Col, Form, Row } from "react-bootstrap";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -9,6 +9,9 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../components/AuthProvider";
+import Announcement from "../components/Announcement";
+import NavBarr from "../components/NavBarr";
+import Footer from "../components/Footer";
 
 
 export default function Login() {
@@ -25,6 +28,8 @@ export default function Login() {
       navigate("/profile");
     }
   }, [currentUser, navigate]);
+
+  
 
 
   const handleLogin = async (e) => {
@@ -55,18 +60,23 @@ export default function Login() {
   }
 
 
+
   return (
-    <Row>
+    <>
+    <Announcement/>
+    <NavBarr/>
+  
+    <Row style={{backgroundColor: "#F8F9F9"}} >
       <Col className="my-5 d-grid gap-3 justify-content-center text-center px-5">
         <h1 style={{ fontSize: 40 }}>Login</h1>
 
         <Button className="rounded-pill" variant="success" onClick={handleGoogleLogin}>
           <i className="bi bi-google"
-            style={{ marginRight: "5px" }} /> Sign up with Google
+            style={{ marginRight: "5px" }} /> Sign in with Google
         </Button>
         <Button className="rounded-pill" variant="primary" onClick={handleFacebookLogin}>
           <i className="bi bi-facebook"
-            style={{ marginRight: "5px" }} /> Sign up with Facebook
+            style={{ marginRight: "5px" }} /> Sign in with Facebook
         </Button>
         <p className="text-center">or</p>
         <Form onSubmit={handleLogin}>
@@ -94,11 +104,18 @@ export default function Login() {
             />
 
           </Form.Group>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Alert.Link href="*" style={{margin: "20px 45px", fontSize: "11px"}}>FORGOT YOUR PASSWORD?</Alert.Link>
           <Button className="rounded-pill" variant="outline-dark" type="submit">
             Sign in
           </Button>
+          
+          <Alert.Link href="register" style={{margin: "10px 0px", fontSize: "12px"}}>Create Account</Alert.Link>
+          </div>
         </Form>
       </Col>
     </Row>
+    <Footer/>
+    </>
   )
 }

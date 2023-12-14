@@ -12,7 +12,7 @@ export default function Profile() {
     const { currentUser } = useContext(AuthContext);
 
       if(!currentUser) {
-          navigate("*");
+          navigate("/");
       }
    
     const handleLogout = () => {
