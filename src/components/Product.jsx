@@ -1,25 +1,39 @@
 import { Image } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../feature/cart/cartSlice";
-
-
+import { addCartItem } from "../feature/cart/cartSlice";
 
 export default function Product({ item }) {
   const dispatch = useDispatch();
 
-  function addItem () {
-        return dispatch(addToCart(item));
-  }
-
+  const addItem = () => {
+    dispatch(addCartItem(item));
+    alert("Item added successfully!");
+    console.log(item);
+  };
 
   return (
-    <div className="d-flex position-relative justify-content-center align-items-center container" 
-    style={{flex: 1, margin: "5px", minWidth: "280px", height: "350px", backgroundColor: "#F8F9F9"}}>
-        <div className="position-absolute" 
-        style={{width: "200px", height: "200px", borderRadius: "50%", backgroundColor: "white"}}/>
-        <Image src={item.img} style={{height: "75%", zIndex: 2}} />
-        {/* info */}
-        <div
+    <div
+      className="d-flex position-relative justify-content-center align-items-center container"
+      style={{
+        flex: 1,
+        margin: "5px",
+        minWidth: "280px",
+        height: "350px",
+        backgroundColor: "#F8F9F9",
+      }}
+    >
+      <div
+        className="position-absolute"
+        style={{
+          width: "200px",
+          height: "200px",
+          borderRadius: "50%",
+          backgroundColor: "white",
+        }}
+      />
+      <Image src={item.img} style={{ height: "75%", zIndex: 2 }} />
+      {/* info */}
+      <div
         className="position-absolute d-flex flex-column align-items-center justify-content-center info"
         style={{
           width: "100%",
@@ -33,7 +47,7 @@ export default function Product({ item }) {
         }}
       >
         {/* Icon container */}
-        <div className="d-flex align-items-center justify-content-center" >
+        <div className="d-flex align-items-center justify-content-center">
           <div
             className="d-flex align-items-center justify-content-center icon"
             style={{
@@ -45,7 +59,7 @@ export default function Product({ item }) {
               backgroundColor: "white",
             }}
           >
-            <i className="bi bi-cart2" onClick={addItem}/>
+            <i className="bi bi-cart2" onClick={addItem} />
           </div>
           {/* <div
             className="d-flex align-items-center justify-content-center icon"
@@ -78,14 +92,17 @@ export default function Product({ item }) {
         {/* Spans container */}
         <div
           className="d-flex flex-column align-items-center justify-content-center"
-          style={{ color: "white", marginTop: "50px", fontWeight: 500, fontSize: "20px" }}
+          style={{
+            color: "white",
+            marginTop: "30px",
+            fontWeight: 500,
+            fontSize: "20px",
+          }}
         >
           <span>{item.name}</span>
           <span>{item.price}</span>
         </div>
       </div>
-
-
     </div>
-  )
+  );
 }

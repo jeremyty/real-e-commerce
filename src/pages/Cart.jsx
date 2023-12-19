@@ -2,20 +2,29 @@ import { Button, Col, Row } from "react-bootstrap";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import NavBarr from "../components/NavBarr";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartItem from "../components/CartItem";
+import { useEffect, useState } from "react";
+import { fetchCartItem } from "../feature/cart/cartSlice";
 
 export default function Cart() {
-  const cart = useSelector((state) => state.cart);
-  let subtotal = 0;
-  cart.forEach((item) => {
-    subtotal += parseInt(item.price.substring(2)) * item.amount;
-  });
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.cart.items);
+
   const navigate = useNavigate();
   const toShop = () => {
     navigate("/pl");
   };
+
+  let subtotal = 0;
+  items.forEach((item) => {
+    subtotal += parseInt(item.price.substring(2)) * item.amount;
+  });
+
+  useEffect(() => {
+    dispatch(fetchCartItem()); // Dispatch the action to fetch cart items
+  }, [dispatch]);
 
   return (
     <div>
@@ -60,15 +69,28 @@ export default function Cart() {
           <Col xs={12} md={8}>
             <div className="d-flex flex-wrap">
               {/* Cart Items */}
-              {cart.map((item, index) => (
-                <div
-                  key={index}
-                  className="cart-item-wrapper"
-                  style={{ width: "100%", margin: "0 15px" }}
+              {items.length > 0 ? (
+                items.map((item) => (
+                  <div
+                    key={item.id}
+                    className="cart-item-wrapper"
+                    style={{ width: "100%", margin: "0 15px" }}
+                  >
+                    <CartItem item={item} key={item.id} itemId={item.id} />
+                  </div>
+                ))
+              ) : (
+                <p
+                  style={{
+                    fontSize: "18px",
+                    margin: "30px 0",
+                    fontStyle: "italic",
+                    padding: "0 30px",
+                  }}
                 >
-                  <CartItem item={item} />
-                </div>
-              ))}
+                  Your cart is currently empty.
+                </p>
+              )}
             </div>
           </Col>
 

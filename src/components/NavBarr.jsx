@@ -4,18 +4,21 @@ import { useSelector } from "react-redux";
 
 export default function NavBarr() {
   const logo = "https://rb.gy/v00p0y";
-  const cart = useSelector((state) => state.cart);
 
-  const totalItemInCart = cart.reduce((accumulator, item) => {
-    return accumulator + item.amount;
-  }, 0);
-
+  const totalItemInCart = useSelector((state) =>
+    state.cart.items.reduce((accumulator, item) => accumulator + item.amount, 0)
+  );
 
   return (
     <Navbar bg="dark" expand="md" variant="dark">
       <Container fluid className="d-flex align-items-center">
-      <Navbar.Brand href="/">
-          <Image src={logo} alt="badminton Logo" roundedCircle style={{ width: 65 }} />
+        <Navbar.Brand href="/">
+          <Image
+            src={logo}
+            alt="badminton Logo"
+            roundedCircle
+            style={{ width: 65 }}
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -41,20 +44,17 @@ export default function NavBarr() {
               }}
             ></i>
           </Form>
-          <Nav className="ms-4">
-            
+          <Nav className="ms-3">
             <Nav.Link href="login">
-              <i className="bi bi-person" style={{fontSize: "22px"}}/>
+              <i className="bi bi-person" style={{ fontSize: "22px" }} />
             </Nav.Link>
-            <Nav.Link href="cart">
+            <Nav.Link href="cart" style={{ fontSize: "19px" }}>
               <Badge badgeContent={totalItemInCart} color="primary">
                 <i className="bi bi-cart"></i>
               </Badge>
             </Nav.Link>
-            
           </Nav>
         </Navbar.Collapse>
-       
       </Container>
     </Navbar>
   );
