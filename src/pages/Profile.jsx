@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../components/AuthProvider";
@@ -41,11 +41,21 @@ export default function Profile() {
         const downloadURL = await getDownloadURL(storageRef);
         setImageUrl(downloadURL);
         setIsEditing(false);
+
+        // Save image URL to localStorage
+        localStorage.setItem("profileImage", downloadURL);
       } catch (error) {
         console.error("Error uploading image:", error);
       }
     }
   };
+
+  useEffect(() => {
+    const storedImageUrl = localStorage.getItem("profileImage");
+    if (storedImageUrl) {
+      setImageUrl(storedImageUrl);
+    }
+  }, []);
 
   const handleLogout = () => {
     auth.signOut();

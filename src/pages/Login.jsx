@@ -163,7 +163,6 @@ export default function Login() {
                 className="rounded-pill"
                 variant="outline-dark"
                 type="submit"
-                onClick={() => setShowPassword(!showPassword)}
               >
                 Sign in
               </Button>
