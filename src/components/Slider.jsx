@@ -31,8 +31,10 @@ export default function Slider() {
             top: "50%",
             transform: "translateY(-50%)",
             backgroundColor: "darkgrey",
-            opacity: 0.5,
+            opacity: 0.8,
             zIndex: 2,
+            borderRadius: "50%", // Adding borderRadius property for rounded background
+            padding: "5px",
           }}
           onClick={handleLeftClick}
         >
@@ -104,12 +106,14 @@ export default function Slider() {
             top: "50%",
             transform: "translateY(-50%)",
             backgroundColor: "darkgrey",
-            opacity: 0.5,
+            opacity: 0.8,
             zIndex: 2,
+            borderRadius: "50%", // Adding borderRadius property for rounded background
+            padding: "5px",
           }}
           onClick={handleRightClick}
         >
-          <i className="bi bi-caret-right-fill"></i>
+          <i className="bi bi-caret-right-fill" />
         </div>
       </div>
     </div>

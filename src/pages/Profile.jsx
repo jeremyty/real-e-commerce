@@ -90,8 +90,12 @@ export default function Profile() {
                       </Button>
                     </>
                   ) : (
-                    <Button onClick={() => setIsEditing(true)} className="mb-3">
-                      Edit
+                    <Button
+                      onClick={() => setIsEditing(true)}
+                      className="mb-3"
+                      variant="primary"
+                    >
+                      Edit Profile Picture
                     </Button>
                   )}
                   <p className="text-center" style={{ fontSize: "18px" }}>

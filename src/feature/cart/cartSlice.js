@@ -5,7 +5,6 @@ const BASE_URL = "https://winsmash-api.jeremytty.repl.co";
 
 export const fetchCartItem = createAsyncThunk("cart/fetchItem", async () => {
   const response = await axios.get(`${BASE_URL}/cart_item/all`);
-  console.log(response.data);
   return response.data;
 });
 
@@ -57,24 +56,15 @@ const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addCartItem.fulfilled, (state, action) => {
-        const itemIndex = state.items.findIndex(
-          (item) => item.id === action.payload.id
-        );
-
-        if (itemIndex >= 0) {
-          state.items[itemIndex].amount += 1;
-        } else {
-          const newProduct = { ...action.payload, amount: 1 };
-          state.items.push(newProduct);
-        }
+        state.items = [action.payload, ...state.items];
       })
       .addCase(fetchCartItem.fulfilled, (state, action) => {
         state.items = action.payload;
-        console.log("ran");
         console.log(state.items);
       })
       .addCase(deleteCartItem.fulfilled, (state, action) => {
-        state.items.filter((item) => item.id !== action.payload);
+        state.items = state.items.filter((item) => item.id !== action.payload);
+        console.log(state.items);
       })
       .addCase(updateNickname.fulfilled, (state, action) => {
         const updatedItem = action.payload.updatedItem; // Assuming your API returns updated item details

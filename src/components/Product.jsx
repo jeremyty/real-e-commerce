@@ -100,7 +100,7 @@ export default function Product({ item }) {
           }}
         >
           <span>{item.name}</span>
-          <span>{item.price}</span>
+          <span>RM{item.price}</span>
         </div>
       </div>
     </div>

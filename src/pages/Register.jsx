@@ -3,11 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthProvider";
 import Footer from "../components/Footer";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Alert, Button, Col, Form, InputGroup, Row } from "react-bootstrap";
 import NavBarr from "../components/NavBarr";
 import Announcement from "../components/Announcement";
 import { useDispatch } from "react-redux";
 import { insertUser } from "../feature/cart/userSlice";
+import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -17,6 +18,8 @@ export default function Signup() {
   const { currentUser } = useContext(AuthContext);
   const dispatch = useDispatch();
   const [user, setUser] = useState(null);
+  const [passwordError, setPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -44,6 +47,20 @@ export default function Signup() {
     }
   };
 
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+
+    if (newPassword.length < 6) {
+      setPasswordError("Password must be at least 6 characters.");
+    } else {
+      setPasswordError("");
+    }
+    setTimeout(() => {
+      setPasswordError("");
+    }, 2000);
+  };
+
   return (
     <>
       <Announcement />
@@ -65,16 +82,26 @@ export default function Signup() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group controlId="formBasicPassword">
               <Form.Label>
                 <i className="bi bi-lock-fill"></i>
               </Form.Label>
-              <Form.Control
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                placeholder="Password"
-                required
-              />
+              <InputGroup>
+                <Form.Control
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
+                />
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeSlashFill /> : <EyeFill />}
+                </Button>
+              </InputGroup>
+              {passwordError && <Alert variant="danger">{passwordError}</Alert>}
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check style={{ fontSize: "10px", margin: "20px 10px" }}>

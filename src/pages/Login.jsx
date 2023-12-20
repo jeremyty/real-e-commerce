@@ -1,4 +1,4 @@
-import { Alert, Button, Col, Form, Row } from "react-bootstrap";
+import { Alert, Button, Col, Form, InputGroup, Row } from "react-bootstrap";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -13,7 +13,7 @@ import Announcement from "../components/Announcement";
 import NavBarr from "../components/NavBarr";
 import Footer from "../components/Footer";
 import { useDispatch } from "react-redux";
-// import { fetchUserData } from "../feature/cart/userSlice";
+import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -21,14 +21,15 @@ export default function Login() {
   const auth = getAuth();
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
-  // const provider = new GoogleAuthProvider();
   const provider2 = new FacebookAuthProvider();
   const dispatch = useDispatch();
   const [user, setUser] = useState(null);
+  const [passwordError, setPasswordError] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
-      // dispatch(fetchUserData(currentUser));
       navigate("/profile");
     }
   }, [dispatch, currentUser, navigate]);
@@ -43,12 +44,29 @@ export default function Login() {
       );
       const user = userCredential.user;
       setUser(user);
-      // Use 'user.uid' and 'user.email' as needed
       console.log("User ID:", user.uid);
       console.log("User Email:", user.email);
     } catch (error) {
+      setLoginError("Unable to login. Please check your email or password.");
       console.error(error);
+      setTimeout(() => {
+        setLoginError("");
+      }, 2000);
     }
+  };
+
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+
+    if (newPassword.length < 6) {
+      setPasswordError("Password must be at least 6 characters.");
+    } else {
+      setPasswordError("");
+    }
+    setTimeout(() => {
+      setPasswordError("");
+    }, 2000);
   };
 
   const handleGoogleLogin = async () => {
@@ -67,7 +85,6 @@ export default function Login() {
       const userCredential = await signInWithPopup(auth, provider2);
       const user = userCredential.user;
       setUser(user);
-      // Use user information as needed
       console.log("User ID:", user.uid);
       console.log("User Email:", user.email);
       console.log("User Name:", user.displayName);
@@ -115,16 +132,28 @@ export default function Login() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group controlId="formBasicPassword">
               <Form.Label>
                 <i className="bi bi-lock-fill"></i>
               </Form.Label>
-              <Form.Control
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                placeholder="Password"
-                required
-              />
+              <InputGroup>
+                <Form.Control
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
+                />
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeSlashFill /> : <EyeFill />}
+                </Button>
+              </InputGroup>
+
+              {passwordError && <Alert variant="danger">{passwordError}</Alert>}
+              {loginError && <Alert variant="danger">{loginError}</Alert>}
             </Form.Group>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <Alert.Link style={{ margin: "20px 45px", fontSize: "11px" }}>
@@ -134,6 +163,7 @@ export default function Login() {
                 className="rounded-pill"
                 variant="outline-dark"
                 type="submit"
+                onClick={() => setShowPassword(!showPassword)}
               >
                 Sign in
               </Button>

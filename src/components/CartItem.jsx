@@ -27,7 +27,7 @@ export default function CartItem({ item, itemId }) {
               {item.amount} x {item.name}
             </Card.Title>
             <Card.Text>Custom printing: {item.nickname}</Card.Text>
-            <Card.Text>Price: {item.price}</Card.Text>
+            <Card.Text>Price: RM{item.price}</Card.Text>
             <Card.Text>Product ID: {item.productid}</Card.Text>
             <Button
               variant="outline-success"

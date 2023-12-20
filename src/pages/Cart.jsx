@@ -5,12 +5,15 @@ import NavBarr from "../components/NavBarr";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartItem from "../components/CartItem";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { fetchCartItem } from "../feature/cart/cartSlice";
+import PayButton from "../components/PayButton";
+import { AuthContext } from "../components/AuthProvider";
 
 export default function Cart() {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
+  const { currentUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const toShop = () => {
@@ -19,7 +22,7 @@ export default function Cart() {
 
   let subtotal = 0;
   items.forEach((item) => {
-    subtotal += parseInt(item.price.substring(2)) * item.amount;
+    subtotal += item.price * item.amount;
   });
 
   useEffect(() => {
@@ -46,8 +49,10 @@ export default function Cart() {
             <Button variant="outline-dark" className="mb-3" onClick={toShop}>
               CONTINUE SHOPPING
             </Button>
-            <div className="mb-3 d-flex flex-column text-center text-md-start">
-              {/* <span style={{ textDecoration: "underline", cursor: "pointer", margin: "0px 20px" }}>Shopping Bag (1)</span> */}
+            <div
+              className="mb-3 d-flex flex-column text-center text-md-start align-items-center"
+              style={{ flex: 1 }} // Allow the flex container to take remaining space
+            >
               <span
                 style={{
                   textDecoration: "underline",
@@ -58,9 +63,6 @@ export default function Cart() {
                 Your Wishlist (0)
               </span>
             </div>
-            <Button variant="outline-dark" className="mb-3">
-              CHECKOUT
-            </Button>
           </div>
         </div>
 
@@ -69,6 +71,7 @@ export default function Cart() {
           <Col xs={12} md={8}>
             <div className="d-flex flex-wrap">
               {/* Cart Items */}
+
               {items.length > 0 ? (
                 items.map((item) => (
                   <div
@@ -117,7 +120,13 @@ export default function Cart() {
                   RM {subtotal}
                 </span>
               </div>
-              <Button variant="outline-dark">CHECK OUT NOW</Button>
+              {currentUser ? (
+                <PayButton items={items} />
+              ) : (
+                <Button variant="info" onClick={() => navigate("/login")}>
+                  Login to Check out
+                </Button>
+              )}
             </div>
           </Col>
         </Row>
