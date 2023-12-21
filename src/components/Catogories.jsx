@@ -45,7 +45,7 @@ export default function Catogories() {
             </h1>
             <Button
               variant="light"
-              style={{ fontWeight: 500, fontSize: "1.5vw" }}
+              style={{ fontWeight: 500, fontSize: "2vw" }}
               onClick={toShop}
             >
               SHOP NOW

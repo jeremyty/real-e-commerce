@@ -73,12 +73,12 @@ export default function Slider() {
                   color: "#1C2833",
                 }}
               >
-                <h2 style={{ fontSize: "4.5vw", marginBottom: "20px" }}>
+                <h2 style={{ fontSize: "6vw", marginBottom: "20px" }}>
                   {item.title}
                 </h2>
                 <p
                   style={{
-                    fontSize: "3.5vw",
+                    fontSize: "4vw",
                     marginBottom: "20px",
                     fontWeight: 400,
                   }}
@@ -87,7 +87,7 @@ export default function Slider() {
                 </p>
                 <Button
                   variant="dark"
-                  style={{ padding: "10px 15px", fontSize: "2vw" }}
+                  style={{ padding: "10px 15px", fontSize: "3vw" }}
                   onClick={toShop}
                 >
                   SHOP NOW
