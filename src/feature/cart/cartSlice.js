@@ -28,8 +28,8 @@ export const addCartItem = createAsyncThunk(
 export const deleteCartItem = createAsyncThunk(
   "cart/deleteCartItem",
   async (itemId) => {
-    const response = await axios.delete(`${BASE_URL}/cart_item/${itemId}`);
-    return response.data;
+    await axios.delete(`${BASE_URL}/cart_item/${itemId}`);
+    return itemId;
   }
 );
 
@@ -60,14 +60,14 @@ const cartSlice = createSlice({
       })
       .addCase(fetchCartItem.fulfilled, (state, action) => {
         state.items = action.payload;
-        console.log(state.items);
       })
       .addCase(deleteCartItem.fulfilled, (state, action) => {
-        state.items = state.items.filter((item) => item.id !== action.payload);
-        console.log(state.items);
+        const deletedItemId = action.payload;
+        state.items = state.items.filter((item) => item.id !== deletedItemId);
       })
+
       .addCase(updateNickname.fulfilled, (state, action) => {
-        const updatedItem = action.payload.updatedItem; // Assuming your API returns updated item details
+        const updatedItem = action.payload.updatedItem; //return updated item details
         const index = state.items.findIndex(
           (item) => item.id === updatedItem.id
         );
@@ -79,14 +79,3 @@ const cartSlice = createSlice({
 });
 
 export default cartSlice.reducer;
-
-// Get the currently authenticated user from Firebase
-// const currentUser = firebase.auth().currentUser;
-
-// const firebaseAuthUID = currentUser.uid;
-
-// Construct the data to be sent in the POST request
-
-//   firebase_auth_uid: firebaseAuthUID,  Pass the Firebase Auth UID to link with the post
-
-// Perform the POST request to your backend API

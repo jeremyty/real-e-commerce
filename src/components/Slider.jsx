@@ -33,7 +33,7 @@ export default function Slider() {
             backgroundColor: "darkgrey",
             opacity: 0.8,
             zIndex: 2,
-            borderRadius: "50%", // Adding borderRadius property for rounded background
+            borderRadius: "50%",
             padding: "5px",
           }}
           onClick={handleLeftClick}
@@ -108,7 +108,7 @@ export default function Slider() {
             backgroundColor: "darkgrey",
             opacity: 0.8,
             zIndex: 2,
-            borderRadius: "50%", // Adding borderRadius property for rounded background
+            borderRadius: "50%",
             padding: "5px",
           }}
           onClick={handleRightClick}

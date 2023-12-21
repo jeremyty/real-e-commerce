@@ -11,7 +11,7 @@ export default function PayButton({ items }) {
       body: JSON.stringify({
         items: items.map((item) => ({
           id: item.id,
-          quantity: item.amount, // Assuming 'amount' represents the quantity
+          quantity: item.amount,
           price: item.price,
           name: item.name,
         })),

@@ -12,7 +12,7 @@ export default function ProductList() {
       <Announcement />
       <h1 style={{ margin: "20px" }}>Popular Products</h1>
       <div className="d-flex justify-content-between">
-        <div style={{ margin: "20px" }}>
+        {/* <div style={{ margin: "20px" }}>
           <span
             style={{ fontSize: "20px", fontWeight: 600, marginRight: "20px" }}
           >
@@ -29,8 +29,8 @@ export default function ProductList() {
             <option>Victor</option>
             <option>Li-Ning</option>
           </Form.Select>
-        </div>
-        <div style={{ margin: "20px" }}>
+        </div> */}
+        {/* <div style={{ margin: "20px" }}>
           <span
             style={{ fontSize: "20px", fontWeight: 600, marginRight: "20px" }}
           >
@@ -44,7 +44,7 @@ export default function ProductList() {
             <option>Price (asc)</option>
             <option>Price (desc)</option>
           </Form.Select>
-        </div>
+        </div> */}
       </div>
       <ProductItems />
       <Newsletter />
